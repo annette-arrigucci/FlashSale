@@ -1,3 +1,5 @@
 *.config
 web.config
 private.config
+*.mdf
+*.ldf

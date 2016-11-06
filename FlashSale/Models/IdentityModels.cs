@@ -9,6 +9,12 @@ namespace FlashSale.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string DisplayName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -24,6 +30,15 @@ namespace FlashSale.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Charity> Charities { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Grower> Growers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Sale> Sales { get; set; }
+        public DbSet<SaleItem> SaleItems { get; set; }
+        public DbSet<SaleNotification> SaleNotifications { get; set; }
 
         public static ApplicationDbContext Create()
         {
